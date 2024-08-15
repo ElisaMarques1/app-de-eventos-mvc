@@ -4,8 +4,10 @@ var bodyParser = require('body-parser');
 
 var enableHotReload = require("./hot-reload");
 
+//importando controllers
 var loginController = require("./controllers/loginController");
 var cadastroController = require("./controllers/cadastroController");
+var eventoController = require("./controllers/eventoController");
 
 const app = express();
 
@@ -28,6 +30,8 @@ enableHotReload(app);
 // Rotas
 app.get("/", loginController.exibirPaginaLogin);
 app.get("/criar-conta", cadastroController.exibirPaginaLogin);
+app.get("/evento", eventoController.exibirPaginaEventos);
+app.get("/criar-evento", eventoController.exibirPaginaCriarEventos);
 
 
 // Inicie o servidor
