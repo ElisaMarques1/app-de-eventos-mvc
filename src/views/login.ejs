@@ -1,23 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entrar</title>
-</head>
-<body>
-    <h1>Entrar no APP</h1>
 
-    <form>
-        <label for="email">E-mail</label>
-        <input id="email" type="email" name="email" placeholder="E-mail">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/styles/criar-evento-styles.css">
+
+  <title>Criar Evento</title>
+</head>
+
+<body>
+  <div class="caixa">
+    <div class="header">
+      <div class="informacao">
+        <h1 class="titulo">Faça seu Login</h1>
+        <small>Entre na sua conta e seja feliz criando seus eventos <br> e visualizando de outras pessoas</small>
+      </div>
+    </div>
+    <div class="formulario">
+      <form>
+        <h2>Entar</h2>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
 
         <label for="password">Senha</label>
-        <input id="password" type="password" name="password" placeholder="Senha">
+        <input type="password" id="password" name="password" required>
 
-        <button type="submit">Entrar</button>
-        <a href="/criar-conta">Criar uma conta</a>
-    </form>
-    
+        <button type="submit">Entrar no APP</button>
+
+        
+      </form>
+    </div>
+  </div>
 </body>
+
+</html>
+
 </html>
