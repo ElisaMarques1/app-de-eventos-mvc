@@ -18,8 +18,8 @@
         <small>Crie sua conta e tenha total acesso a criação <br> e listagem de eventos pertinho de você 😍😍</small>
       </div>
     </div>
-    <div class="formulario">
-      <form>
+    <form class="formulario" action="/criar-conta" method="post">
+      
         <h2>Criar conta</h2>
 
         <label for=" nome">Nome</label>
@@ -29,11 +29,13 @@
         <input type="email" id="email" name="email" required>
 
         <label for="password">Senha</label>
-        <input type="password" id="password" name="password" required>
+        <input type="password" id="password" name="senha" required>
         
         <button type="submit">Criar conta</button>
-      </form>
-    </div>
+        <a href="/criar-conta">Não possui conta? Clique aqui</a>
+      
+      
+    </form>
   </div>
 </body>
 

@@ -28,9 +28,20 @@ app.use(express.static(path.join(__dirname, "public")));
 enableHotReload(app);
 
 // Rotas
+
+//rota para pagina inicial
 app.get("/", loginController.exibirPaginaLogin);
+
+//rota para rota de cadastro
 app.get("/criar-conta", cadastroController.exibirPaginaLogin);
+
+//rota para pagina de cadastro
+app.post("/criar-conta", cadastroController.adicionarUsuario);
+
+//rota para pagina de eventos
 app.get("/evento", eventoController.exibirPaginaEventos);
+
+//rota para pagina de criar eventos
 app.get("/criar-evento", eventoController.exibirPaginaCriarEventos);
 
 
