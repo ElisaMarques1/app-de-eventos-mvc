@@ -8,6 +8,7 @@ var enableHotReload = require("./hot-reload");
 var loginController = require("./controllers/loginController");
 var cadastroController = require("./controllers/cadastroController");
 var eventoController = require("./controllers/eventoController");
+const { adicionarEvento } = require("./models/eventoModel");
 
 const app = express();
 
@@ -37,6 +38,8 @@ app.get("/criar-conta", cadastroController.exibirPaginaLogin);
 
 //rota para pagina de cadastro
 app.post("/criar-conta", cadastroController.adicionarUsuario);
+
+app.post("/criar-evento", eventoController.adicionarEvento);
 
 //rota para pagina de eventos
 app.get("/evento", eventoController.exibirPaginaEventos);
