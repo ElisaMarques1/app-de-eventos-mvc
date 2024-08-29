@@ -15,7 +15,7 @@ function adicionarEvento(request, response) {
 
     eventoModel.adicionarEvento(titulo, local, data);
 
-    response.redirect('/');
+    response.redirect('/evento');
 }
 
 
