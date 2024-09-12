@@ -30,6 +30,12 @@ function adicionarUsuario(nome, email, senha) {
     })
 }
 
+async function buscarUsuarioPorEmail(email) {
+    const usuario = await pool.query(`SELECT * FROM usuarios WHERE email = '${email}'`);
+    return usuario[0][0]
+}
+
 module.exports = {
-    adicionarUsuario
+    adicionarUsuario,
+    buscarUsuarioPorEmail
 }
