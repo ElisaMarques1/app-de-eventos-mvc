@@ -1,5 +1,6 @@
 const md5 = require('md5');
 const usuarioModel = require('../models/usuarioModel');
+const { request } = require('express');
 
 function exibirPaginaLogin(request, response) {
    response.render('login');
@@ -29,10 +30,17 @@ if (md5(password)!== usuario.senha) {
    return;
 }
 
+
 console.log('Usuário autenticado com sucesso!');
 
 console.log( usuario);
+
+//redirecionar para o evento
+response.redirect('/evento');
 }
+
+//importando para a pagina de login
+
 
 module.exports = {
    exibirPaginaLogin,
