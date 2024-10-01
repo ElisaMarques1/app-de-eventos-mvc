@@ -1,6 +1,7 @@
 var express = require("express");
 var path = require("path");
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 var enableHotReload = require("./hot-reload");
 
@@ -8,7 +9,11 @@ var enableHotReload = require("./hot-reload");
 var loginController = require("./controllers/loginController");
 var cadastroController = require("./controllers/cadastroController");
 var eventoController = require("./controllers/eventoController");
+var autenticarMiddleware = require("./middlewares/autenticar");
+
 const { adicionarEvento } = require("./models/eventoModel");
+
+
 
 const app = express();
 
@@ -24,6 +29,15 @@ console.log("Views path set to:", path.join(__dirname, "views"));
 
 // Configuração de pasta pública
 app.use(express.static(path.join(__dirname, "public")));
+
+//configuração do express-session
+app.use(
+  session({
+    secret: "chave-super-secreta",
+    resave: false,
+    saveUninitialized: false,
+  })
+)
 
 // Habilitar hot-reload
 enableHotReload(app);
@@ -42,13 +56,13 @@ app.get("/criar-conta", cadastroController.exibirPaginaLogin);
 //rota para pagina de cadastro
 app.post("/criar-conta", cadastroController.adicionarUsuario);
 
-app.post("/criar-evento", eventoController.adicionarEvento);
+//rota para rota de eventos
+app.get("/eventos", autenticarMiddleware.protegerRotaUsuario, eventoController.exibirPaginaEventos);
 
-//rota para pagina de eventos
-app.get("/evento", eventoController.exibirPaginaEventos);
+app.post("/criar-evento", autenticarMiddleware.protegerRotaAdmin, eventoController.adicionarEvento);
 
 //rota para pagina de criar eventos
-app.get("/criar-evento", eventoController.exibirPaginaCriarEventos);
+app.get("/criar-evento", autenticarMiddleware.protegerRotaAdmin, eventoController.exibirPaginaCriarEventos);
 
 
 // Inicie o servidor

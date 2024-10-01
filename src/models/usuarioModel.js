@@ -5,7 +5,7 @@ const pool = require('../config/banco-de-dados');
 
 const usuarios = [];
 
-function adicionarUsuario(nome, email, senha) {
+function adicionarUsuario(nome, email, senha, cargo) {
     //usuarios.push({ 
      //id: Date.now(),
      //nome: nome,
@@ -21,7 +21,7 @@ function adicionarUsuario(nome, email, senha) {
 
      //adicionar o usuario no banco de dados
      pool.query(
-        `INSERT INTO usuarios (nome, email, senha, criadoEm) VALUES ('${nome}', '${email}', '${senhaCriptografada}', NOW())`
+        `INSERT INTO usuarios (nome, email, senha, criadoEm, cargo) VALUES ('${nome}', '${email}', '${senhaCriptografada}', NOW(), '${cargo}')`
     ).then(() => {
         console.log('DEU CERTO!!!!');
     } )

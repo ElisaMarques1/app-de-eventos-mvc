@@ -30,13 +30,18 @@ if (md5(password)!== usuario.senha) {
    return;
 }
 
+//salvar o usuario na sessão
+request.session.usuario = usuario;
+
+//redirecionar para o evento
+response.redirect('/evento');
+
 
 console.log('Usuário autenticado com sucesso!');
 
 console.log( usuario);
 
-//redirecionar para o evento
-response.redirect('/evento');
+
 }
 
 //importando para a pagina de login
